@@ -47,7 +47,7 @@ public abstract class MediaProcessorThread extends Thread {
 
     private final static int THUMBNAIL_BIG = 1;
 
-    private final static int THUMBNAIL_SMALL = 2;
+    private final static int THUMBNAIL_SMALL = 3;
 
     protected String filePath;
 
@@ -139,11 +139,11 @@ public abstract class MediaProcessorThread extends Thread {
 
             Options options = new Options();
             if (what > 1500) {
-                options.inSampleSize = scale * 4;
-            } else if (what > 1000 && what <= 1500) {
                 options.inSampleSize = scale * 3;
-            } else if (what > 400 && what <= 1000) {
+            } else if (what > 1000 && what <= 1500) {
                 options.inSampleSize = scale * 2;
+            } else if (what > 400 && what <= 1000) {
+                options.inSampleSize = scale * 1;
             } else {
                 options.inSampleSize = scale;
             }
